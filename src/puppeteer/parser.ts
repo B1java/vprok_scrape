@@ -3,16 +3,16 @@ import { ProductData } from "../types/types.js";
 import { writeFile } from 'fs/promises';
 
 export default async function parseData(page: Page): Promise<ProductData> {
-    await page.waitForSelector('div.ProductPage_buy__I_iyc')
+    await page.waitForSelector('div[class^="ProductPage_buy"]')
 
     const data = await page.evaluate(() => {
-        if (document.querySelector('div.ProductPage_buy__I_iyc')) {
-            const oldPrice = document.querySelector('span.Price_price__QzA8L.Price_size_XS__ESEhJ.Price_role_old__r1uT1')?.textContent.trim() || null
-            const newPrice = document.querySelector('span.Price_price__QzA8L.Price_size_XL__MHvC1.Price_role_discount__l_tpE')?.textContent.trim().split('/')[0] || null
-            const regPrice = document.querySelector('span.Price_price__QzA8L.Price_size_XL__MHvC1.Price_role_regular__X6X4D')?.textContent.trim() || null
+        if (document.querySelector('div[class^="ProductPage_buy"]')) {
+            const oldPrice = document.querySelector('span[class^="Price_price"][class*="Price_size_XS"][class*="Price_role_old"]')?.textContent.trim() || null
+            const newPrice = document.querySelector('span[class^="Price_price"][class*="Price_size_XL"][class*="Price_role_discount"]')?.textContent.trim().split('/')[0] || null
+            const regPrice = document.querySelector('span[class^="Price_price"][class*="Price_size_XL"][class*="Price_role_regular"]')?.textContent.trim() || null
 
-            const reviewsCount = document.querySelector('.ActionsRow_reviews__AfSj_')?.textContent.trim().split(' ')[0] || null
-            const rating = document.querySelector('.ActionsRow_stars__EKt42')?.textContent.trim() || null
+            const reviewsCount = document.querySelector('a[class^="ActionsRow_reviews"]')?.textContent.trim().split(' ')[0] || null
+            const rating = document.querySelector('a[class^="ActionsRow_stars"]')?.textContent.trim() || null
 
 
             return {
