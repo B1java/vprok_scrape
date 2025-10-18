@@ -1,5 +1,6 @@
 node_modules
 screenshots/
 lastProduct/*
+!lastProduct/.gitkeep
 .env
 Backlog.md
