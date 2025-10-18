@@ -10,12 +10,10 @@ export default async function setRegion(page: Page, regionName: string): Promise
     catch {
         await page.click('div[class^="AddNewAddress_addAddress"]', { delay: 5000 }) // Added delay to ensure that scripts are loaded 
     }
-    console.log('1 button clicked')
 
     // Waiting for #2 button to load and clicking it (Меню с регионами (Москва и область по умолчанию))
     await page.waitForSelector('button[class^="RegionButton_regionButton"]')
     await page.click('button[class^="RegionButton_regionButton"]')
-    console.log('2 button clicked')
 
     // Waiting for #3 button to load and clicking it (Выбор конкретного города)
     await page.waitForSelector('button[class^="UiRegionListBase_button"]')
@@ -26,11 +24,6 @@ export default async function setRegion(page: Page, regionName: string): Promise
 
         if (cityText === regionName) {
             await regEl.click()
-            console.log('3 button clicked')
         }
     }
-}
-
-export function validateRegion(region: string): Boolean {
-    return regions.includes(region)
 }
