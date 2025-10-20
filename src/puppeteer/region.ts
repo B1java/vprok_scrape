@@ -3,11 +3,9 @@ import { Page } from "puppeteer";
 export default async function setRegion(page: Page, regionName: string): Promise<void> {
     // Waiting for #1 button to load and clicking it (Укажите адрес доставки)
     await page.waitForSelector('div[class^="AddNewAddress_addAddress"]')
-    await page.waitForFunction(() => {
-        const el = document.querySelector('div[class^="AddNewAddress_addAddress"]') as HTMLElement
-        return el && typeof el.onclick === 'function'
-    })
-    await page.click('div[class^="AddNewAddress_addAddress"]') // Added delay to ensure that scripts are loaded 
+
+    await page.waitForSelector('div[class^="UiHeaderHorizontalBase_addNewAddress"]')
+    await page.click('div[class^="UiHeaderHorizontalBase_addNewAddress"]', { delay: 10000 }) // Added delay to ensure that scripts are loaded 
 
     // Waiting for #2 button to load and clicking it (Меню с регионами (Москва и область по умолчанию))
     await page.waitForSelector('button[class^="RegionButton_regionButton"]')

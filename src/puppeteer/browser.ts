@@ -3,7 +3,7 @@ import { proxyAuth, proxyProps, proxy } from "../proxy/proxy.js";
 import { reloadOnLag } from "../utils/funcs.js";
 
 export default async function launchBrowser(link: string): Promise<[Page, Browser, HTTPResponse | null]> {
-    const browser = await puppeteer.launch({ ...proxyProps })
+    const browser = await puppeteer.launch({ headless: false, ...proxyProps })
     const page = await browser.newPage()
 
     if (proxy) {
