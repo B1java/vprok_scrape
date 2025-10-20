@@ -1,7 +1,7 @@
 # О скрипте
 
 Скрипт позволяет получать информацию о продукте с [vprok.ru](https://www.vprok.ru/) .
-Данные о товаре попадут в директория lastProduct - `last_data.json` и `last_screenshot.png`.
+Данные о товаре попадут в директорию `lastProduct` - `last_data.json` и `last_screenshot.png`.
 
 Пример `last_data.json` :
 
@@ -42,6 +42,7 @@ npm run parse "link" "region"
 ## Доступный формат ссылок
 
 Скрипт работает только с ссылками, которые начинаются с `https://www.vprok.ru/` .
+
 **НЕПРАВИЛЬНЫЕ ССЫЛКИ**:
 
 - `vprok.ru/`
