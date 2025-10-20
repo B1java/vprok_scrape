@@ -27,9 +27,10 @@
 git clone https://github.com/B1java/vprok_scrape
 ```
 
-Устанавливаем все нужные npm пакеты
+Переходим в рабочую директорю и устанавливаем все нужные npm пакеты
 
 ```bash
+cd vprok_scrape
 npm i
 ```
 
