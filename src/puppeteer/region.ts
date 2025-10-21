@@ -5,6 +5,7 @@ export default async function setRegion(page: Page, regionName: string): Promise
     await page.waitForSelector('div[class^="AddNewAddress_addAddress"]')
 
     await page.waitForSelector('div[class^="UiHeaderHorizontalBase_addNewAddress"]')
+    console.log('[INFO] button found, waiting 10 seconds to ensure scripts are loaded')
     await page.click('div[class^="UiHeaderHorizontalBase_addNewAddress"]', { delay: 10000 }) // Added delay to ensure that scripts are loaded 
 
     // Waiting for #2 button to load and clicking it (Меню с регионами (Москва и область по умолчанию))
@@ -20,6 +21,7 @@ export default async function setRegion(page: Page, regionName: string): Promise
 
         if (cityText === regionName) {
             await regEl.click()
+            console.log('[INFO] Region has been changed')
         }
     }
 }

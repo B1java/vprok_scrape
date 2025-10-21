@@ -38,6 +38,7 @@ export async function saveToFile(data: ProductData): Promise<void> {
         const json = JSON.stringify(data, null, 2)
 
         await writeFile('lastProduct/last_data.json', json, 'utf-8')
+        console.log('[INFO] Data has been written to a file')
     } catch (err) {
         console.log(`An error occured while writing data to a file: \n${err}`)
     }
